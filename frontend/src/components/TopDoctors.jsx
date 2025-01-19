@@ -25,9 +25,9 @@ const TopDoctors = () => {
                                 />
                             </div>
                             <div className="p-4">
-                                <div className="flex items-center gap-2 text-sm text-center text-green-500">
-                                    <p className="w-2 h-2 bg-green-500 rounded-full"></p>
-                                    <p>Available</p>
+                                <div className={`flex items-center gap-2 text-sm text-center ${item.available ? 'text-green-500' : 'text-gray-500'} `}>
+                                    <p className={`w-2 h-2 ${item.available ? 'bg-green-500' : 'bg-gray-500'}  rounded-full`}></p>
+                                    <p>{item.available ? 'Available' : 'Not Available'}</p>
                                 </div>
                                 <p className="font-semibold text-gray-900 text-lg">{item.name}</p>
                                 <p className="text-gray-600 text-sm">{item.speciality}</p>
@@ -37,7 +37,7 @@ const TopDoctors = () => {
                 })}
             </div>
             <button onClick={() => { navigate('/doctor'); scrollTo(0, 0) }} className="px-4 py-2 mt-4 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition">More</button>
-        </div>
+        </div >
     );
 };
 

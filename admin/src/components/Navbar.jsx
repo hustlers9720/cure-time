@@ -1,12 +1,14 @@
 import React from 'react';
 import { AdminContext } from '../context/AdminContext';
 import { useContext } from 'react';
-import logo from '../assets/hello-removebg-preview.png';
+import logo from '../assets/new logo.png';
 import { useNavigate } from 'react-router-dom';
+import { DoctorContext } from '../context/DoctorContext';
 
 
 const Navbar = () => {
     const { atoken, setAToken } = useContext(AdminContext);
+    const { dToken, setDToken } = useContext(DoctorContext)
     const navigate = useNavigate();
 
     const logout = () => {
@@ -14,13 +16,18 @@ const Navbar = () => {
         if (atoken) {
             setAToken(''); localStorage.removeItem('atoken');
         }
+
+        if (dToken) {
+            setDToken('');
+            localStorage, removeItem('dToken');
+        }
     };
 
     return (
-        <div className="flex justify-between items-center px-6 py-4 bg-white shadow-md">
+        <div className="flex justify-between items-center px-6 py-3 bg-white shadow-md">
             {/* Left Section: Logo and Role */}
             <div className="flex items-center space-x-4">
-                <img src={logo} alt="Logo" className="w-16 h-16 object-contain" />
+                <img src={logo} alt="Logo" className="w-20 h-18 object-contain" />
                 <p className="text-lg font-semibold text-gray-700">
                     {atoken ? 'Admin' : 'Doctor'}
                 </p>

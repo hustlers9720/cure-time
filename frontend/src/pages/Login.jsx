@@ -1,7 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { AppContext } from '../context/AppContext';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [state, setState] = useState('Sign Up');
+    const navigate = useNavigate()
+    const { token, setToken, backendUrl } = useContext(AppContext)
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
@@ -9,7 +16,38 @@ const Login = () => {
     const onSubmitHandler = async (event) => {
         event.preventDefault();
         // Handle form submission
+        try {
+            if (state === 'Sign Up') {
+                const { data } = await axios.post(backendUrl + '/api/user/register', { name, password, email })
+                if (data.success) {
+                    localStorage.setItem('token', data.token)
+                    setToken(data.token)
+                }
+                else {
+                    toast.error(data.message)
+                }
+            }
+            else {
+                const { data } = await axios.post(backendUrl + '/api/user/login', { password, email })
+                if (data.success) {
+                    localStorage.setItem('token', data.token)
+                    setToken(data.token)
+                }
+                else {
+                    toast.error(data.message)
+                }
+            }
+        } catch (error) {
+            toast.error(error.message)
+        }
     };
+
+
+    useEffect(() => {
+        if (token) {
+            navigate('/')
+        }
+    }, [token])
 
     return (
         <form
@@ -35,6 +73,7 @@ const Login = () => {
                             <label className="block text-gray-700 font-medium mb-1">Full Name</label>
                             <input
                                 type="text"
+                                name='text'
                                 placeholder="Enter your name"
                                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 value={name}
@@ -46,6 +85,7 @@ const Login = () => {
                         <label className="block text-gray-700 font-medium mb-1">Email</label>
                         <input
                             type="email"
+                            name='email'
                             placeholder="Enter your email"
                             className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                             value={email}
@@ -56,6 +96,7 @@ const Login = () => {
                         <label className="block text-gray-700 font-medium mb-1">Password</label>
                         <input
                             type="password"
+                            name='password'
                             placeholder="Enter your password"
                             className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                             value={password}

@@ -1,5 +1,5 @@
 import React from 'react';
-import cureTimeImage from '../assets/hello-removebg-preview.png';
+import cureTimeImage from '../assets/new logo.png';
 
 const Footer = () => {
     return (
