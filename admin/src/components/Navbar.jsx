@@ -27,7 +27,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center px-6 py-3 bg-white shadow-md">
             {/* Left Section: Logo and Role */}
             <div className="flex items-center space-x-4">
-                <img src={logo} alt="Logo" className="w-20 h-18 object-contain" />
+                <img onClick={() => navigate('/doctor-dashboard')} src={logo} alt="Logo" className="w-20 h-18 object-contain" />
                 <p className="text-lg font-semibold text-gray-700">
                     {atoken ? 'Admin' : 'Doctor'}
                 </p>
