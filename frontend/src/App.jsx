@@ -7,10 +7,10 @@ import MyProfile from './pages/MyProfile'
 import Login from './pages/Login'
 import MyAppointment from './pages/MyAppointment'
 import Appointment from './pages/Appointment'
-import Navbar from './components/NavBar'
+import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Contact from './pages/Contact'
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
