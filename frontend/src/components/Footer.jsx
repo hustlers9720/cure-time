@@ -29,7 +29,7 @@ const Footer = () => {
                         <p className="font-semibold text-lg mb-4">GET IN TOUCH</p>
                         <ul className="space-y-2">
                             <li className="hover:text-gray-600 cursor-pointer">+1-212-456-7980</li>
-                            <li className="hover:text-gray-600 cursor-pointer">curetime@gmail.com</li>
+                            <li className="hover:text-gray-600 cursor-pointer">adigoyal9720@gmail.com</li>
                         </ul>
                     </div>
                 </div>

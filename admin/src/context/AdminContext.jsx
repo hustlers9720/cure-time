@@ -9,7 +9,7 @@ const AdminContextProvider = (props) => {
     const [atoken, setAToken] = useState(localStorage.getItem('atoken') ? localStorage.getItem('atoken') : '')
     const [doctors, setDoctors] = useState([])
     const [appointments, setAppointments] = useState([]);
-    const backendUrl = import.meta.env.VITE_BACKEND_URL
+    const backendUrl = "https://cure-time-backend.onrender.com"
 
     const [dashData, setDashData] = useState(false)
 
