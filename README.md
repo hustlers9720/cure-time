@@ -198,4 +198,7 @@ Submit a Pull Request
 7️⃣ License
 This project is licensed under the MIT License 📜 
 
+Frontend--https://cure-time-ivory.vercel.app/
+Admin--https://cure-time-admin.onrender.com/
+
 for any Query you may ask at adigoyal9720@gmail.com
